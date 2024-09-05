@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="test">
+    <!-- Specify static if the object doesn't move -->
+    <static>false</static>
+
+    <!-- Define the link -->
+    <link name="example_link">
+      
+      <!-- Visual representation of the model -->
+      <visual name="example_visual">
+        <geometry>
+          <mesh>
+            <uri>model://roadtrack/meshes/roadtrack1.dae</uri>
+          </mesh>
+        </geometry>
+        <!-- Optionally, set a pose for visual geometry -->
+        <pose>0 0 0 0 0 0</pose> <!-- (x y z roll pitch yaw) -->
+      </visual>
+
+      <!-- Collision representation (for physical interactions) -->
+      <collision name="example_collision">
+        <geometry>
+          <mesh>
+            <uri>model://roadtrack/meshes/roadtrack1.dae</uri>
+          </mesh>
+        </geometry>
+        <!-- Optional: Adjust collision geometry position/rotation -->
+        <pose>0 0 0 0 0 0</pose> <!-- Adjust the pose if needed -->
+        
+        <!-- Surface properties: friction, contact, etc. -->
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>10000000.0</kp>
+              <kd>1.0</kd>
+              <min_depth>0.001</min_depth>
+              <max_vel>0.1</max_vel>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+  </model>
+</sdf>
